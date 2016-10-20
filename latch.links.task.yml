@@ -1,0 +1,4 @@
+latch.account:
+  title: Latch account
+  route_name: latch.account
+  base_route: entity.user.canonical

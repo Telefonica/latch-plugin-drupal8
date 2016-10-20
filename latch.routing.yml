@@ -1,0 +1,17 @@
+latch.settings:
+  path: 'admin/config/system/latch'
+  defaults:
+    _title: 'Latch settings'
+    _form: '\Drupal\latch\Form\settingsForm'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'latch administration'
+
+latch.account:
+  path: '/user/{user}/latch'
+  defaults:
+    _title: 'Latch account'
+    _form: '\Drupal\latch\Form\pairForm'
+  requirements:
+    _permission: 'pairing enabled'
