@@ -133,6 +133,7 @@ class DefaultController extends ControllerBase {
  */
 	public function buildHTML($htmlStructure) {
 	    global $base_url;
+	    $module_name = drupal_get_path('module', 'latch');
 		return '<html><head>'
 	            . '<style>'
 	            . '.twoFactorContainer { display:block; width:300px; margin: 5% auto 0 auto; text-align: center; border: solid 1px rgb(184, 184, 184); border-radius:5px}'
@@ -141,12 +142,12 @@ class DefaultController extends ControllerBase {
 	            . '.twoFactorHeader img {width: 45px; height: auto; float:left; margin-top: 5px; margin-left:20px}'
 	            . '.twoFactorForm {clear:left; padding-top:10px;}'
 	            . 'input {margin-top:10px}'
-	            . 'input[type="submit"] {width:65px;}'
+	            . 'input[type="submit"] {width:auto;}'
 	            . '#edit-latch-otp {width:100px;}'
 	            . '</style>'
 	            . '</head><body>'
 	            . '<div class="twoFactorContainer">'
-	            . '<div class="twoFactorHeader"><img src="' . $base_url . '/modules/latch/symbol.png"><h3>One-Time Password</h3></div><div class="twoFactorForm">'
+	            . '<div class="twoFactorHeader"><img src="' . $base_url . '/' . $module_name . '/symbol.png"><h3>One-Time Password</h3></div><div class="twoFactorForm">'
 	            . drupal_render($htmlStructure)
 	            . '</div></body></html>';
 	}
