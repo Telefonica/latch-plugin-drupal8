@@ -1,0 +1,8 @@
+latch.settings:
+  title: 'Latch settings'
+  description: 'Configure the App ID and Secret for Latch configuration.'
+  parent: system.admin_config_system
+  route_name: latch.settings
+  weight: 100
+  requirements:
+    _permission: 'latch administration'

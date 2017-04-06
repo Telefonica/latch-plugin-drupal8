@@ -1,0 +1,57 @@
+<?php
+
+/*
+  Latch Drupal 8 plugin - Integrates Latch into the Drupal 8 authentication process.
+  Copyright (C) 2016 Eleven Paths
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\latch\Controller\DefaultController;
+
+/**
+ * Implements hook_help().
+ */
+function latch_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.latch':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module integrates Latch into the Drupal 8 authentication process') . '</p>';
+      $output .= '<h3>' . t('Use') . '</h3>';
+      $output .= '<p>' . t('First all you must <a href=":latch-settings">configure the Application  ID and Secret</a> of your Latch application. Then, from "Latch Account" tab in your user account, you can pair/unpair the service.', [':latch-settings' => \Drupal::url('latch.settings')]) . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function latch_user_login($account) {
+  $user = \Drupal::currentUser();
+  DefaultController::userProperlyLogged($user);
+}
+
+/*
+ * Implements hook_form_alter().
+ */
+function latch_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if ($form_id == "latch_one_time_form") {
+        $form['form_id']['#value'] = 'user_login_form';
+        $form['#action'] = 'login';
+    }
+}

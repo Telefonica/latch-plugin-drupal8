@@ -1,0 +1,10 @@
+latch.settings:
+  type: mapping
+  label: Settings
+  mapping:
+    latch_appid:
+      type: string
+      label: 'Insert App ID here:'
+    latch_secret:
+      type: string
+      label: 'Insert Secret here:'
