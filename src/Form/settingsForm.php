@@ -30,7 +30,7 @@ class settingsForm extends ConfigFormBase {
 
     // Latch info
     $form['latch_info'] = array(
-      '#markup' => '<p>This is the page to set Latch configuration. To get register as a Latch application please visit: <a href="https://latch.elevenpaths.com" target="_blank">latch.elevenpaths.com</a></p>'
+      '#markup' => '<p>' . $this->t('This is the page to set Latch configuration. To get register as a Latch application please visit: <a href="https://latch.elevenpaths.com" target="_blank">latch.elevenpaths.com</a>') . '</p>'
     );
 
     // Page title field

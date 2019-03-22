@@ -147,7 +147,7 @@ class DefaultController extends ControllerBase {
 	            . '</style>'
 	            . '</head><body>'
 	            . '<div class="twoFactorContainer">'
-	            . '<div class="twoFactorHeader"><img src="' . $base_url . '/' . $module_name . '/symbol.png"><h3>One-Time Password</h3></div><div class="twoFactorForm">'
+	            . '<div class="twoFactorHeader"><img src="' . $base_url . '/' . $module_name . '/symbol.png"><h3>' . t('One-Time Password') . '</h3></div><div class="twoFactorForm">'
 	            . drupal_render($htmlStructure)
 	            . '</div></body></html>';
 	}
